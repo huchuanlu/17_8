@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<base target="_blank">
+<title>ReadMe</title>
+<meta name="author" content="Zhi-Hua Zhou">
+<meta name="keywords" content="Machine Learning, Multi-Instance Learning, Neural Networks">
+<meta name="generator" content="Namo WebEditor v3.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+
+<p><FONT size="+3" face="Times New Roman">ReadMe File for Instance KI-SVM Package </FONT></p>
+<h2>&nbsp;</h2>
+<h2><font face="Times New Roman">
+  <hr>
+</font></h2>
+<h2><font face="Times New Roman">KI-SVM</font></h2>
+<p style="margin-right:5mm; margin-left:5mm;"><font face="Times New Roman"><b>Description:</b></font><font
+ face="Times New Roman"> KI-SVM is a package for locating the region of interest with multi-instance learning. The package includes the MATLAB code of the algorithm KI-SVM. There are two  kinds of codes. One is Bag KI-SVM. The other is Instance KI-SVM. <br>
+<br> </font><font face="Times New Roman"><b>References:</b></font><font face="Times New Roman"> 
+&nbsp;</font> 
+<ul type="disc">
+    <li style="margin-right:5mm; margin-left:5mm;"><FONT face="Times New Roman">Y.-F. Li, J. T. Kwok, I. W. Tsang, and Z.-H. Zhou. <A href="paper/ecml09.pdf" target=_blank><U>A convex method for locating regions of interest with multi-instance learning</U></A>. In: <STRONG>Proceedings of the 20th European Conference on Machine Learning (ECML'09)</STRONG>, Bled, Slovenia, 2009. </FONT> 
+</ul>
+<p style="margin-right:5mm; margin-left:5mm;"><font face="Times New Roman"><b>ATTN:</b></font><font
+ face="Times New Roman"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This package 
+is free for academic usage. You can run it at your own risk. For other purposes, 
+please contact Prof. Zhi-Hua Zhou (</font><a href="mailto:zhouzh@nju.edu.cn"><font
+ face="Times New Roman">zhouzh@nju.edu.cn</font></a><font face="Times New Roman">).</font></p>
+<p style="margin-right:5mm; margin-left:5mm;"><font face="Times New Roman"><b>Requirement:</b> The package was developed with MATLAB and C++. To run this code, a new software of &quot;libsvm-MI-SVM&quot; should be available. </font></p>
+<p style="margin-right:5mm; margin-left:5mm;"><font face="Times New Roman"><b>ATTN2: 
+</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This 
+package was developed by Mr. Yu-Feng Li (<a href="mailto:zhangml@lamda.nju.edu.cn">liyf@lamda.nju.edu.cn</a>). 
+For any problem concerning the code, please feel free to contact Mr. Li.</font></p>
+<p>&nbsp;  </p>
+<h2>File Descriptions</h2>
+<p>===============================</p>
+<p>There are 7 files in Instance KI-SVM package. In the following, we will just describe the function of these files. </p>
+<h3>Inst_KI_SVM.m</h3>
+<p>function [test_bag_label, test_inst_label, test_bag_pre, test_ins_pre] = Inst_KI_SVM(opt, train_data, test_data)</p>
+<h4>Description: With inputting the train_data <font color="#330099">train_data</font>, test data <font color="#330099">test_data</font> and some options <font color="#330099">opt</font>, this function outputs the predicted label vector of testing bag <font color="#330099">test_bag_label</font>, the prediction label of testing instances <font color="#330099">test_inst_label</font>, the prediction of testing bags <font color="#330099">test_bag_pre</font> and the prediction of testing instances <font color="#330099">test_ins_pre</font>. </h4>
+<p>&nbsp;</p>
+<h3>Inst_KI_SVM_prediction.m</h3>
+<p>function [test_bag_label, test_inst_label, test_bag_pre, test_ins_pre] = Inst_KISVM_prediction(alpha, y,y_set, beta, inx_train, K_test, inx_test)</p>
+<h4>Desciption: With inputting the dual variable <font color="#330099">alpha</font>, the label of training bags <font color="#330099">y</font>, the coefficients of generated label <font color="#330099">beta</font>, the index of training bags <font color="#330099">inx_train</font>, the kernel matrix <font color="#330099">K_test</font> and  the index of test bags <font color="#330099">inx_test</font>, this function outputs the predicted label vector of testing bag <font color="#330099">test_bag_label</font>, the prediction label of testing instances <font color="#330099">test_inst_label</font>, the prediction of testing bags <font color="#330099">test_bag_pre</font> and the prediction of testing instances <font color="#330099">test_ins_pre</font>. </h4>
+<p>&nbsp;</p>
+<h3>celltomatrix.m</h3>
+<p>function [x,y,inx,pos,inx2] = celltomatrix(data)</p>
+<h4>Description: With inputting the data with cell format <font color="#330099">data</font>, this function outputs the instances in matrix format <font color="#330099">x</font>, the labels <font color="#330099">y</font> and two index arrays <font color="#330099">inx, inx2</font> and the number of positive bags <font color="#330099">pos</font>.</h4>
+<p>&nbsp;</p>
+<h3>Find_y.m &amp; Find_y_linear.m </h3>
+<p>RBF kernel : function [y,best_value] = Find_y(alpha,y_train,K_train,cand_y_set,inx,pos) </p>
+<p>LINEAR kernel : function [y,best_value] = Find_y_linear(alpha,y_train,X,cand_y_set,inx,pos)</p>
+<h4>Description: With inputting the dual variable <font color="#330099">alpha</font>, the label of training bags <font color="#330099">y_train</font>, the kernel matrix <font color="#330099">K_train</font> (the data <font color="#330099">X</font> for &quot;Find_y_linear&quot;), the generated label set <font color="#330099">cand_y_set</font>, the index of training bags <font color="#330099">inx</font> and the number of positive bags <font color="#330099">pos</font>, this function outputs new generated label vector <font color="#330099">y</font> and its corresponding objective value <font color="#330099">best_value</font>. </h4>
+<h3>&nbsp;</h3>
+<h3>Max_violated_y_set.m</h3>
+<p>function cand_y_set = Max_Violated_y_set(X,Y,inx,pos)</p>
+<h4>Description: With inputting the data sets <font color="#330099">X, </font>the labels <font color="#330099">Y</font>, the index of training bags <font color="#330099">inx</font> and the number of positive bags <font color="#330099">pos</font>, this function outputs the initial candidate label vector <font color="#330099">cand_y_set</font>. </h4>
+<p>&nbsp;</p>
+<h3>normlaization_gaussian.m</h3>
+<p>function K = normalization_gaussian(ratio,x,xx)</p>
+<h4>Description: With inputting the two data sets <font color="#330099">x, xx </font>and the parameter <font color="#330099">ratio</font> of gaussian kernel, this function outputs the kernel matrix <font color="#330099">K</font>. </h4>
+<p><font face="Times New Roman"></font></p>
+<font face="Times New Roman"><hr>&nbsp;</font></p>
+</body>
+
+</html>
